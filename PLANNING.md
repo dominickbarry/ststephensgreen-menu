@@ -42,7 +42,7 @@ Items are organized around five events. You can view or filter the planner by an
 4. **Winter**
 5. **St. Patrick's Day** (its own event, since the pub is Irish and the day deserves a dedicated lineup)
 
-Each item belongs to one of these five. A starter idea bank seeds a few Irish-pub cocktail and food ideas for every event (think Guinness, Jameson, Baileys, and Tullamore), which you can turn into a real item with one click and then edit freely.
+Each item belongs to one of these five. A starter idea bank seeds a few Irish-pub cocktail and food ideas for every event (think Guinness, Jameson, Baileys, and Tullamore). Pressing "Seed new item" on an idea immediately creates and saves a real item at status **idea**, loads it into the spec sheet, and shows its card on the calendar. From there you edit it freely (recipe lines, costing, price, method, allergens) just like any other item.
 
 ## The lifecycle workflow
 
@@ -52,16 +52,16 @@ Every item carries a status badge that moves through five stages in order:
 2. **testing**: being developed and trialed. Recipe, cost, and spec are getting worked out.
 3. **approved**: signed off by the team, ready to schedule for the menu.
 4. **live**: currently on sale to guests.
-5. **retired**: taken off the menu. Kept for reference and for reuse next season.
+5. **retired**: taken off the menu. Kept for reference and for reuse next season. This is the final stage: the "Advance status" button stops here and is hidden once an item is retired, so the lifecycle never loops back to idea.
 
-Advancing an item's status is a deliberate step, so the badge always reflects where the item really is.
+Advancing an item's status is a deliberate, one-way step through the stages above, so the badge always reflects where the item really is. To move a status backward (for example to revive a retired item), edit the item and pick a status from the dropdown.
 
 ## How costing works
 
 For each item you enter recipe lines (one per ingredient or component), each with a short description and a line cost. From those the planner computes:
 
 - **Cost per serve**: the sum of all line costs.
-- **Suggested price**: the price that hits your target margin, calculated as `cost / (1 - target margin)`. Enter a target margin percentage and the planner shows the price you would need to charge.
+- **Suggested price**: the price that hits your target margin, calculated as `cost / (1 - target margin)`. It appears once you enter a positive target margin percentage. Until then it shows a neutral placeholder rather than the bare cost per serve, so it is never mistaken for a recommendation to sell at cost.
 - **Actual margin %**: based on the menu price you actually set, calculated as `(price - cost) / price`.
 - **Pour cost / food cost %**: the cost as a share of price, calculated as `cost / price`. Bars usually watch pour cost; kitchens watch food cost. Same formula, different name.
 
@@ -84,7 +84,7 @@ Checklist state is saved with the rest of your data, so it survives a page reloa
 Because data is stored per browser and does not sync, use Export and Import to keep it safe and to share it:
 
 - **Export** writes all planner data to a JSON file and downloads it to your computer. No server is involved.
-- **Import** reads a JSON file you select and loads it back into the planner, then re-renders. A malformed file shows an error message instead of breaking the page.
+- **Import** reads a JSON file you select and loads it back into the planner, then re-renders. Import replaces all current planner data with the file's contents, so if you already have items the planner asks you to confirm before overwriting them. A malformed file shows an error message instead of breaking the page.
 
 Good habits:
 

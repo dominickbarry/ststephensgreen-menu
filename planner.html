@@ -694,12 +694,13 @@
 
       var m = toNum(targetMarginPct) / 100;
       var suggested = null;
+      // Only recommend a price once the user has expressed a positive target
+      // margin. An empty or zero margin leaves this null (rendered as a dash)
+      // so cost/serve is never mistaken for a "sell at cost" recommendation.
+      // m >= 1 is impossible (infinite) -> also leave null.
       if (m > 0 && m < 1) {
         suggested = cost / (1 - m);
-      } else if (m <= 0 && cost >= 0) {
-        // 0% margin -> sell at cost
-        suggested = cost;
-      } // m >= 1 is impossible (infinite) -> leave null
+      }
 
       var p = toNum(price);
       var actualMargin = null;
@@ -816,7 +817,9 @@
       }
 
       h += '<div class="card-actions">';
-      h += '<button type="button" class="btn small" data-act="advance" data-id="' + esc(it.id) + '">Advance status →</button>';
+      if (it.status !== "retired") {
+        h += '<button type="button" class="btn small" data-act="advance" data-id="' + esc(it.id) + '">Advance status →</button>';
+      }
       h += '<button type="button" class="btn ghost small" data-act="edit" data-id="' + esc(it.id) + '">Edit</button>';
       h += '<button type="button" class="btn danger small" data-act="delete" data-id="' + esc(it.id) + '">Delete</button>';
       h += '</div>';
@@ -861,6 +864,10 @@
     }
 
     // ---------- Checklist ----------
+    // state.checklist is keyed by the literal season string (and each entry by
+    // the literal CHECKLIST_ITEMS label). SEASONS and CHECKLIST_ITEMS are a
+    // fixed list, so renaming a constant would strand saved state; keep these
+    // strings stable, or migrate state.checklist if they ever change.
     function renderChecklist() {
       var html = "";
       SEASONS.forEach(function (season) {
@@ -971,7 +978,11 @@
     // ---------- Actions ----------
     function advanceStatus(it) {
       var idx = STATUSES.indexOf(it.status);
-      it.status = STATUSES[(idx + 1) % STATUSES.length];
+      // Linear workflow: clamp at the final status. "retired" is terminal, so
+      // advancing past it is a no-op (no wrap back to "idea").
+      if (idx >= 0 && idx < STATUSES.length - 1) {
+        it.status = STATUSES[idx + 1];
+      }
     }
 
     function renderAll() {
@@ -1019,10 +1030,18 @@
           setMsg("Import failed: not a planner export.", "err");
           return;
         }
+        // Import replaces all current data (the export is a full snapshot).
+        // Warn before overwriting anything the user has already entered.
+        if (state.items.length && !window.confirm("Import will REPLACE all current planner data (" + state.items.length + " item(s)). Continue?")) {
+          setMsg("Import cancelled.", "");
+          return;
+        }
         state = normalizeState(parsed);
         save();
+        resetForm();
+        activeSeason = "all";
         renderAll();
-        setMsg("Imported " + state.items.length + " item(s).", "ok");
+        setMsg("Imported " + state.items.length + " item(s), replacing previous data.", "ok");
       };
       reader.onerror = function () { setMsg("Import failed: could not read file.", "err"); };
       reader.readAsText(file);
@@ -1077,15 +1096,23 @@
         if (!btn) return;
         var idea = findIdea(btn.getAttribute("data-seed"));
         if (!idea) return;
-        resetForm();
-        $("f-name").value = idea.name;
-        $("f-season").value = idea.season;
-        $("f-category").value = idea.category;
-        $("f-status").value = "idea";
-        $("f-desc").value = idea.desc;
-        updateMethodLabel();
-        updateCosting();
-        $("add").scrollIntoView({ behavior: "smooth" });
+        // "Seed new item" persists a new draft item at status "idea" built from
+        // the chosen idea, then re-renders so the card appears immediately.
+        var seeded = normalizeItem({
+          id: genId(),
+          name: idea.name,
+          season: idea.season,
+          category: idea.category,
+          status: "idea",
+          description: idea.desc
+        });
+        state.items.push(seeded);
+        save();
+        activeSeason = "all";
+        renderAll();
+        loadItemIntoForm(seeded);
+        $("calendar").scrollIntoView({ behavior: "smooth" });
+        setMsg("Seeded \"" + seeded.name + "\" as a new idea. Edit the spec sheet below to flesh it out.", "ok");
       });
 
       // Checklist toggles (delegated)
