@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>St. Stephen's Green — Menu</title>
+  <style>
+    :root {
+      --green: #1b4332;
+      --green-deep: #0f2e20;
+      --cream: #f7f1e3;
+      --cream-soft: #fbf7ec;
+      --gold: #b08d2f;
+      --gold-light: #c9a24a;
+      --ink: #2b2b25;
+      --muted: #6a6a5c;
+      --line: #e3d9c2;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      background: var(--green);
+      color: var(--cream);
+      text-align: center;
+      padding: 2.75rem 1.25rem 2.25rem;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .crest {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      color: var(--cream);
+    }
+
+    header .tagline {
+      color: var(--gold-light);
+      font-style: italic;
+      margin-top: 0.6rem;
+      font-size: 1.05rem;
+    }
+
+    header .meta {
+      margin-top: 1.1rem;
+      font-size: 0.9rem;
+      color: #d8e4da;
+      font-family: Helvetica, Arial, sans-serif;
+      letter-spacing: 0.03em;
+    }
+
+    header .meta div { margin-top: 0.3rem; }
+    header .meta .dot { color: var(--gold); margin: 0 0.5rem; }
+    header .meta a { color: #d8e4da; text-decoration: none; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--green-deep);
+      padding: 0.6rem 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem;
+      border-bottom: 2px solid var(--gold);
+    }
+    nav a {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+    nav a:hover { background: var(--gold); color: var(--green-deep); }
+
+    /* ---------- Layout ---------- */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 1rem;
+    }
+
+    .section { margin-bottom: 2.75rem; scroll-margin-top: 3.5rem; }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.55rem;
+      color: var(--green);
+      position: relative;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      display: inline-block;
+      width: 46px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin: 0 0.75rem;
+    }
+
+    .section-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1.3rem;
+    }
+    .section-note.spacer { margin-bottom: 1.3rem; }
+
+    .item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .item:last-child { border-bottom: none; }
+
+    .item-body { flex: 1; }
+
+    .item-name {
+      font-size: 1.1rem;
+      color: var(--ink);
+      font-weight: bold;
+    }
+
+    .item-name .tag {
+      display: inline-block;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.62rem;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: 3px;
+      padding: 0.05rem 0.3rem;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+    .item-name .tag.vegan { color: #2e6b2e; border-color: #2e6b2e; }
+
+    /* ---------- Drinks estimate banner & group headings ---------- */
+    .est-banner {
+      background: var(--gold);
+      color: #2b220a;
+      text-align: center;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.8rem;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+    .group-title {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.3rem;
+      margin: 1.8rem 0 0.4rem;
+    }
+    .group-title:first-of-type { margin-top: 0; }
+    .price .est {
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: normal;
+      vertical-align: super;
+      margin-left: 1px;
+    }
+    .opt-price .est { color: var(--gold); font-size: 0.6rem; font-weight: normal; vertical-align: super; }
+
+    .item-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-style: italic;
+      margin-top: 0.2rem;
+    }
+
+    .item-options {
+      margin-top: 0.4rem;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.85rem;
+      color: var(--ink);
+    }
+    .item-options div {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.12rem 0;
+      border-bottom: 1px dotted #e0d6bd;
+    }
+    .item-options div:last-child { border-bottom: none; }
+    .item-options .opt-price { color: var(--green); font-weight: bold; white-space: nowrap; padding-left: 0.75rem; }
+
+    .dots {
+      flex: 1;
+      border-bottom: 1px dotted #cbbf9f;
+      transform: translateY(-4px);
+      min-width: 1rem;
+    }
+
+    .price {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      color: var(--green);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* ---------- QR / footer ---------- */
+    .qr-block {
+      background: var(--green);
+      color: var(--cream);
+      text-align: center;
+      padding: 2.25rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .qr-block h3 { color: var(--gold-light); font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+    .qr-block img {
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      width: 160px;
+      height: 160px;
+    }
+    .qr-block p { font-size: 0.85rem; margin-top: 0.9rem; color: #d8e4da; font-family: Helvetica, Arial, sans-serif; }
+
+    footer {
+      text-align: center;
+      padding: 1.75rem 1.25rem 2.5rem;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: var(--cream-soft);
+      line-height: 1.7;
+    }
+    footer a { color: var(--green); text-decoration: none; font-weight: bold; }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.9rem; }
+      .section-title::before, .section-title::after { width: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="crest">☘</div>
+    <h1>St. Stephen's Green</h1>
+    <div class="tagline">A proper Irish pub in the heart of Mountain View</div>
+    <div class="meta">
+      <div>223 Castro Street, Mountain View, CA 94041</div>
+      <div>
+        <a href="tel:+16509649151">+1 (650) 964-9151</a>
+        <span class="dot">•</span>
+        Open daily 11:00 AM – 2:00 AM
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#appetizers">Appetizers</a>
+    <a href="#salads">Salads &amp; Bowls</a>
+    <a href="#entrees">Irish Favourites</a>
+    <a href="#burgers">Burgers &amp; Sandwiches</a>
+    <a href="#dessert">Dessert</a>
+    <a href="#sides">Sides</a>
+    <a href="#drinks">Drinks</a>
+  </nav>
+
+  <main>
+    <!-- APPETIZERS -->
+    <section class="section" id="appetizers">
+      <h2 class="section-title">Appetizers</h2>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Chicken Wings</div>
+          <div class="item-desc">Pick 1 flavor — with carrots, celery &amp; ranch. Guinness BBQ, Smoky Habanero, House Hot Sauce, Lemon Pepper, or Salt &amp; Vinegar.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$17.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Guinness Beer Cheese Pretzels <span class="tag">Veg</span></div>
+          <div class="item-desc">Soft-baked pretzel sticks, Guinness &amp; Irish cheddar beer cheese sauce.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$14.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Lemon &amp; Almond Brussel Sprouts <span class="tag">Veg</span></div>
+          <div class="item-desc">Flash fried &amp; tossed in fresh lemon juice, toasted almonds &amp; house seasoning.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$13.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Wisconsin Cheese Curds <span class="tag">Veg</span></div>
+          <div class="item-desc">Hand dipped in beer batter in-house, ranch &amp; Guinness BBQ sauce.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$13.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Cauli Bites <span class="tag">Veg</span></div>
+          <div class="item-desc">Golden fried beer-battered cauliflower florets with blue cheese &amp; buffalo dip.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$12.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">House Fries</div>
+          <div class="item-desc">Steak cut fries, house seasoning &amp; ranch.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$9.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Scotch Eggs</div>
+          <div class="item-desc">Soft-boiled eggs wrapped in house sausage blend &amp; panko crusted, mustard mayo.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$14.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Chicken Strips</div>
+          <div class="item-desc">Fried golden brown in crispy breadcrumbs, with a side of ranch.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$16.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">House Made Sausage Rolls</div>
+          <div class="item-desc">House made sausage with herbs &amp; spices rolled in puff pastry &amp; baked to perfection, wholegrain mustard &amp; horseradish aioli.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$15.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Smoked Salmon on Brown Soda Bread</div>
+          <div class="item-desc">Freshly made Irish soda bread, topped with cream cheese, smoked salmon &amp; capers.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$19.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Pork Scratchings</div>
+          <div class="item-desc">Pork scratchings (chicharrón) made to order, buffalo ranch.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$12.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Crispy Buffalo Cod Bites</div>
+          <div class="item-desc">Buffalo battered cod "wings", zesty citrus aioli.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$15.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Fish Tacos</div>
+          <div class="item-desc">A trio of beer-battered haddock, red cabbage, pico de gallo, radish, chipotle mayo, four tortillas.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$16.00</span>
+      </div>
+    </section>
+
+    <!-- SALADS, BOWLS & HEALTHY OPTIONS -->
+    <section class="section" id="salads">
+      <h2 class="section-title">Salads, Bowls &amp; Healthy Options</h2>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Roast Veggies &amp; Organic Quinoa Bowl <span class="tag vegan">Vegan</span></div>
+          <div class="item-desc">Hearty cauliflower, broccoli, red &amp; gold beets roasted with garlic &amp; paprika oil, served over quinoa on a kale power salad blend.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$19.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Greek Brown Rice Bowl <span class="tag">Veg</span></div>
+          <div class="item-desc">Whole grain rice, feta, cucumber, onion, cherry tomatoes, roasted red bell peppers, Kalamata olives &amp; lemon oregano sauce.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$19.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Goat's Cheese Salad <span class="tag">Veg</span></div>
+          <div class="item-desc">Spring mix, baby spinach, fresh seasonal fruit, candied pecans, goat's cheese crumbles &amp; cranberry raspberry dressing.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$19.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Classic Greek Salad <span class="tag">Veg</span></div>
+          <div class="item-desc">Crispy romaine, cherry tomatoes, cucumber, red onion, roasted red bell peppers, Kalamata olives &amp; feta in oregano dressing.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$17.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Roast Beets Salad <span class="tag">Veg</span></div>
+          <div class="item-desc">Wild arugula, orange, shaved carrots, parsnip, feta, pistachios &amp; citrus vinaigrette.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$18.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Smoked Salmon &amp; Arugula</div>
+          <div class="item-desc">Baby arugula, cherry tomatoes, fried capers, red onion &amp; crispy fennel tossed in a lemon-lime oregano vinaigrette.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$24.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Chipotle Lime Chicken Salad</div>
+          <div class="item-desc">Romaine hearts, grilled corn, roasted bell peppers, onion, cherry tomatoes, pepper jack, avocado, tortilla chips &amp; chipotle dressing.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$19.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Caesar Salad <span class="tag">Veg</span></div>
+          <div class="item-options">
+            <div><span>Side Portion</span><span class="opt-price">$8.00</span></div>
+            <div><span>Full Portion</span><span class="opt-price">$14.00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">House Salad <span class="tag">Veg</span></div>
+          <div class="item-options">
+            <div><span>Side Portion</span><span class="opt-price">$8.00</span></div>
+            <div><span>Full Portion</span><span class="opt-price">$14.00</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IRISH FAVOURITES & ENTREES -->
+    <section class="section" id="entrees">
+      <h2 class="section-title">Irish Favourites &amp; Entrées</h2>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">15 Hour Slow Braised Brisket Plate</div>
+          <div class="item-desc">Guinness BBQ sauce, onion straws, mashed potatoes &amp; seasonal vegetables.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$27.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Sausage &amp; Mash</div>
+          <div class="item-desc">Jumbo Irish pork sausages on a bed of creamy colcannon, smothered in red onion gravy.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$25.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Gaelic Chicken</div>
+          <div class="item-desc">Pan seared chicken breast, Irish whiskey, mushroom &amp; rosemary cream sauce, mashed potatoes, seasonal vegetables.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$24.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Irish Pub Chicken Curry</div>
+          <div class="item-desc">Irish-style sweet &amp; mild chicken curry simmered in a ginger, mango, creamy curry sauce.</div>
+          <div class="item-options">
+            <div><span>with Fries</span><span class="opt-price">$24.00</span></div>
+            <div><span>with Rice</span><span class="opt-price">$24.00</span></div>
+            <div><span>½ Fries ½ Rice</span><span class="opt-price">$24.00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Shepherd's Pie</div>
+          <div class="item-desc">Ground beef with root vegetables in a rich gravy, topped with creamy mash &amp; a side of locally grown vegetables.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$24.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Lentil &amp; Garbanzo Stew <span class="tag">Veg</span></div>
+          <div class="item-desc">Garbanzo beans, quinoa &amp; lentils simmered in a spiced tomato-spinach purée with garlic, ginger &amp; aromatic Indian spices.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$23.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Ultimate Fish &amp; Chips</div>
+          <div class="item-desc">¾ lb North Atlantic haddock, beer battered, steak cut potato fries, tartar sauce.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$27.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Grilled Salmon</div>
+          <div class="item-desc">Grilled salmon fillet, brown rice &amp; a sautéed kale power blend infused with lemon &amp; ginger.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$28.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Vodka Chicken Fettuccine</div>
+          <div class="item-desc">Diced chicken breast, leeks, garlic, marinara, heavy cream, pepper flakes, white wine &amp; parmesan.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$22.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Guinness Steak Pie</div>
+          <div class="item-desc">Tender beef, rich Guinness gravy in a flaky puff pastry pie with locally grown vegetables &amp; creamy mash.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$26.00</span>
+      </div>
+    </section>
+
+    <!-- BURGERS & SANDWICHES -->
+    <section class="section" id="burgers">
+      <h2 class="section-title">Burgers &amp; Sandwiches</h2>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Southwestern Burger</div>
+          <div class="item-desc">½ lb angus beef patty, house made chorizo, melted pepper jack, crispy onions, poblano chilies &amp; anaheim peppers.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$22.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Signature Lamb Smash Burger</div>
+          <div class="item-desc">Two house made lamb patties, Dubliner Irish cheese, pickled onion, arugula, house curry aioli &amp; steak fries.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$25.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Impossible Burger <span class="tag vegan">Plant-Based</span></div>
+          <div class="item-desc">100% plant-based patty, brioche bun, lettuce, tomato, onion &amp; 1000 Island. Steak fries.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$22.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Stephen's Fried Chicken Sandwich</div>
+          <div class="item-desc">Crispy buttermilk-marinated chicken breast with house secret spices, toasted brioche, lettuce, pickles &amp; Tullamore Dew sauce.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$20.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Brisket Sandwich</div>
+          <div class="item-desc">15 hour slow roasted brisket, crispy fried onion straws, Guinness BBQ sauce, brioche bun &amp; steak fries.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$24.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">House Burger</div>
+          <div class="item-desc">½ lb black angus beef patty, lettuce, tomato &amp; red onion, brioche bun, choice of cheese, steak fries.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$20.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Kobe Burger</div>
+          <div class="item-desc">½ lb Kobe beef patty, caramelized onions, lettuce, tomato, pickles, Dubliner Irish cheese, chili aioli &amp; shoestring fries.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$26.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Steak Sandwich</div>
+          <div class="item-desc">Confit garlic herb aioli, arugula, mozzarella, caramelized onion, ciabatta roll &amp; shoestring fries.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$26.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Spicy Castro Burger</div>
+          <div class="item-desc">½ lb angus beef patty, house made chorizo, melted pepper jack, crispy onions, poblano chilies &amp; anaheim peppers.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$22.00</span>
+      </div>
+    </section>
+
+    <!-- DESSERT -->
+    <section class="section" id="dessert">
+      <h2 class="section-title">Dessert</h2>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Trinity Cheesecake</div>
+          <div class="item-desc">House-made Guinness chocolate brownie, creamy Baileys cheesecake &amp; Irish whiskey ganache.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$12.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Bread Pudding</div>
+          <div class="item-desc">Warm toffee sauce &amp; house-made Guinness gelato.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$11.00</span>
+      </div>
+    </section>
+
+    <!-- SIDES -->
+    <section class="section" id="sides">
+      <h2 class="section-title">Sides</h2>
+
+      <div class="item">
+        <div class="item-body"><div class="item-name">Side Vegetables</div></div>
+        <span class="dots"></span>
+        <span class="price">$5.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body"><div class="item-name">Side Mash</div></div>
+        <span class="dots"></span>
+        <span class="price">$6.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body"><div class="item-name">Garlic Bread</div></div>
+        <span class="dots"></span>
+        <span class="price">$5.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body"><div class="item-name">Side Skinny Fries</div></div>
+        <span class="dots"></span>
+        <span class="price">$7.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Curry Chips</div>
+          <div class="item-desc">Steak cut fries served with Irish pub–style chicken curry sauce.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$15.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Loaded Fries</div>
+          <div class="item-desc">House fries topped with Guinness beer cheese sauce, bacon, tomatoes &amp; seasoned sour cream.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$13.00</span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Garlic Fries</div>
+          <div class="item-desc">Steak cut fries tossed with fresh garlic, butter, parsley &amp; parmesan.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$12.00</span>
+      </div>
+    </section>
+
+    <!-- DRINKS -->
+    <section class="section" id="drinks">
+      <h2 class="section-title">Drinks</h2>
+      <div class="est-banner">
+        Drink prices below are <strong>estimates</strong> (marked <strong>est</strong>) — please replace with your actual prices. Beer list confirmed; cocktails &amp; whiskey are typical Irish-pub selections to edit as you like.
+      </div>
+
+      <!-- DRAUGHT -->
+      <div class="group-title">On Draught</div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Guinness Draught</div>
+          <div class="item-desc">The best Guinness in the Bay Area — poured properly with a perfect two-part settle.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$9<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Harp Lager</div>
+          <div class="item-desc">Crisp, golden Irish lager — clean and refreshing.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$8<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Smithwick's Irish Ale</div>
+          <div class="item-desc">Ruby-red ale with notes of roasted malt &amp; mild hops.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$8<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Rotating European &amp; Local Craft</div>
+          <div class="item-desc">Ask your server for today's guest taps — a rotating selection of European imports &amp; Bay Area craft beer.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">Market<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Black &amp; Tan</div>
+          <div class="item-desc">Guinness layered over Harp — a classic half-and-half.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$9<span class="est">est</span></span>
+      </div>
+
+      <!-- IRISH WHISKEY -->
+      <div class="group-title">Irish Whiskey</div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Jameson</div>
+          <div class="item-desc">Triple-distilled, smooth &amp; approachable. The pub standard.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$10<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Tullamore D.E.W.</div>
+          <div class="item-desc">Gentle, golden &amp; triple-blend — light fruit &amp; vanilla.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$10<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Redbreast 12 Year</div>
+          <div class="item-desc">Rich single pot still whiskey — sherry, spice &amp; dried fruit.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$16<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Teeling Small Batch</div>
+          <div class="item-desc">Rum-cask finished Dublin whiskey — sweet &amp; smooth.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$13<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Whiskey Flight</div>
+          <div class="item-desc">Choose any three Irish whiskeys from our shelf — ask your server.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$24<span class="est">est</span></span>
+      </div>
+
+      <!-- IRISH COFFEE & WARM -->
+      <div class="group-title">Irish Coffees &amp; Warmers</div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Classic Irish Coffee</div>
+          <div class="item-desc">Hot coffee, Jameson, brown sugar &amp; lightly whipped cream. A house signature.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$11<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Baileys Coffee</div>
+          <div class="item-desc">Hot coffee with Baileys Irish Cream &amp; whipped cream.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$11<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Hot Whiskey (Hot Toddy)</div>
+          <div class="item-desc">Irish whiskey, honey, lemon &amp; clove — the classic cure for a cold evening.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$11<span class="est">est</span></span>
+      </div>
+
+      <!-- COCKTAILS -->
+      <div class="group-title">Cocktails</div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Dublin Mule</div>
+          <div class="item-desc">Irish whiskey, ginger beer, fresh lime &amp; a sprig of mint over ice.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$14<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Emerald Isle</div>
+          <div class="item-desc">Gin, fresh lime, mint &amp; a touch of green melon — bright &amp; crisp.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$14<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Baileys Espresso Martini</div>
+          <div class="item-desc">Vodka, Baileys, fresh espresso &amp; coffee liqueur, shaken cold.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$15<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Old Fashioned</div>
+          <div class="item-desc">Irish whiskey, bitters, sugar &amp; orange — stirred over a large cube.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$15<span class="est">est</span></span>
+      </div>
+
+      <!-- WINE -->
+      <div class="group-title">Wine</div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">House Red / White</div>
+          <div class="item-desc">Ask your server for today's by-the-glass selection.</div>
+          <div class="item-options">
+            <div><span>Glass</span><span class="opt-price">$10<span class="est">est</span></span></div>
+            <div><span>Bottle</span><span class="opt-price">$38<span class="est">est</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Prosecco</div>
+          <div class="item-desc">Light, dry &amp; sparkling — also the base of our brunch mimosas.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$11<span class="est">est</span></span>
+      </div>
+
+      <!-- NON-ALCOHOLIC -->
+      <div class="group-title">Non-Alcoholic</div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Bottomless Mimosas <span class="tag">Brunch</span></div>
+          <div class="item-desc">Available during weekend brunch, Sat &amp; Sun 11am–3pm.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$25<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Guinness 0.0 <span class="tag">N/A</span></div>
+          <div class="item-desc">Non-alcoholic Guinness — all the flavor, none of the ABV.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$7<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Coca-Cola Products</div>
+          <div class="item-desc">Coke, Diet Coke, Sprite &amp; more. Free refills.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$4<span class="est">est</span></span>
+      </div>
+
+      <div class="item">
+        <div class="item-body">
+          <div class="item-name">Coffee &amp; Tea</div>
+          <div class="item-desc">Freshly brewed coffee or a proper pot of Irish breakfast tea.</div>
+        </div>
+        <span class="dots"></span>
+        <span class="price">$4<span class="est">est</span></span>
+      </div>
+    </section>
+  </main>
+
+  <div class="qr-block">
+    <h3>Scan to View Our Menu</h3>
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://ststephensgreen.com/menu/order"
+      alt="QR code linking to the St. Stephen's Green menu" />
+    <p>Point your phone camera here to open the menu</p>
+  </div>
+
+  <footer>
+    <div><strong>St. Stephen's Green</strong></div>
+    <div>223 Castro Street, Mountain View, California 94041</div>
+    <div><a href="tel:+16509649151">+1 (650) 964-9151</a></div>
+    <div>Open daily 11:00 AM – 2:00 AM · Weekend brunch Sat &amp; Sun 11am–3pm</div>
+  </footer>
+</body>
+</html>
